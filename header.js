@@ -110,8 +110,10 @@ crealist.addEventListener("click",()=>{
     let content = document.querySelector(".conteiner-playList-favorite");   
     let contentPreview = document.querySelector(".content-music-preview");
     let conteinerAvatar = document.querySelector(".conteiner-playList");
+    let contentLogin = document.querySelector(".conteiner-login")
     contentPreview.classList.add("hidden");
-    if (content.classList.toString().includes("visible")) {
+    if (content.classList.toString().includes("visible") || contentLogin.classList.toString().includes("visible")) {
+        contentLogin.classList.remove("visible");
         content.classList.remove("visible");
         conteinerAvatar.classList.add("visible")
     }
@@ -128,9 +130,11 @@ favoriteList.addEventListener("click",()=>{
     }
     let content = document.querySelector(".conteiner-playList-favorite");
     let contentPreview = document.querySelector(".content-music-preview");
-    let conteinerAvatar = document.querySelector(".conteiner-playList");   
+    let conteinerAvatar = document.querySelector(".conteiner-playList"); 
+    let contentLogin = document.querySelector(".conteiner-login");  
     contentPreview.classList.add("hidden");
-    if (conteinerAvatar.classList.toString().includes("visible")) {
+    if (conteinerAvatar.classList.toString().includes("visible") || contentLogin.classList.toString().includes("visible")) {
+        contentLogin.classList.remove("visible");
         conteinerAvatar.classList.remove("visible");
     }
     content.classList.add("visible")
@@ -147,8 +151,10 @@ inicioBtn.addEventListener("click",()=>{
     let content = document.querySelector(".conteiner-playList-favorite");
     let contentPreview = document.querySelector(".content-music-preview");
     let conteinerAvatar = document.querySelector(".conteiner-playList");
+    let contentLogin = document.querySelector(".conteiner-login");    
 
-    if (conteinerAvatar.classList.toString().includes("visible") || content.classList.toString().includes("visible")) {
+    if (conteinerAvatar.classList.toString().includes("visible") || content.classList.toString().includes("visible") || contentLogin.classList.toString().includes("visible")) {
+        contentLogin.classList.remove("visible");
         conteinerAvatar.classList.remove("visible");
         content.classList.remove("visible");
         contentPreview.classList.remove("hidden");
@@ -157,6 +163,31 @@ inicioBtn.addEventListener("click",()=>{
 
 })
 
+let btnSignIn = document.querySelector(".btn-login");
+let btnSignInSecun = document.getElementById("btn-login-secun")
+
+const openSesion = () =>{
+    let typeMusic = document.querySelector(".type-music");
+    if (typeMusic.classList.toString().includes("active")) {
+        typeMusic.classList.remove("active");
+    }
+    let content = document.querySelector(".conteiner-playList-favorite");
+    let contentPreview = document.querySelector(".content-music-preview");
+    let conteinerAvatar = document.querySelector(".conteiner-playList");
+    let contentLogin = document.querySelector(".conteiner-login");
+
+    if (conteinerAvatar.classList.toString().includes("visible") || content.classList.toString().includes("visible") || contentPreview.classList.toString().includes("hidden") == false) {
+        conteinerAvatar.classList.remove("visible");
+        content.classList.remove("visible");
+        contentPreview.classList.add("hidden");
+        contentLogin.classList.add("visible");
+
+    }  
+     contentLogin.classList.add("visible");
+}
+
+btnSignInSecun.addEventListener("click",openSesion)
+btnSignIn.addEventListener("click",openSesion)
 
 let arrNumbers = document.querySelectorAll(".row-info-music");
 

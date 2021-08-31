@@ -20,6 +20,195 @@ header.activeBg{
 	background: #1119;
 }
 
+
+.conteiner-login{
+	display: none;
+}
+
+.conteiner-login.visible{
+	  display: flex;
+}
+.content-form{	
+	position: relative;
+	background: #fff;
+	height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.content-form::before{
+	content: "";
+	position: absolute;
+	background: ;
+	top: 0;
+	left: 0;
+	width:250px;
+	height: 170px;
+	clip-path: polygon(79% 10%, 66% 25%, 44% 29%, 25% 52%, 16% 79%, 0 100%, 0 80%, 0 66%, 0 0, 100% 0);
+	background: #7b13a1;
+}
+.content-form::after{
+	content: "";
+	position: absolute;
+	background: ;
+	bottom: 0;
+	left: 0;
+	width:250px;
+   clip-path: polygon(23% 43%, 40% 58%, 50% 76%, 74% 84%, 100% 100%, 0 100%, 0 80%, 0 66%, 0 0, 14% 16%);
+	height: 170px;
+	background: #7b13a1;
+}
+	.form{
+	padding: 10px 40px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+}
+
+.form h3{
+	position: relative;
+	color:#fff;
+	font-size: 20px;
+	padding: 20px;
+	background: linear-gradient(130deg , #9911a6 ,#321d91);
+	clip-path: polygon(94% 6%, 94% 39%, 100% 70%, 77% 97%, 40% 77%, 0 100%, 8% 51%, 0 0, 35% 15%, 67% 0);
+	border-radius: 60px;
+
+    
+}
+
+.form h3 span{
+	border-radius: 10px;
+}
+
+	.remix-icon {
+    position: relative;
+}
+
+.inputs-text{
+	 margin: 10px 0px;
+	 padding: 5px 3px 0px 50px;
+	 height: 30px;
+    width: 240px;
+    border: none;
+    outline: none;
+    font-weight: 600;
+    border-bottom: 1.5px solid #1112;
+    color: #356fd4;
+    font-size: 18px;
+    border-radius: 20px;
+
+}
+.inputs-text::placeholder{
+	color: #ccc;
+}
+
+.remix-icon i{
+   position: absolute;
+   top: 18px;
+   left: 15px;
+   color: #004bc4;
+}
+.btn-iniciar{
+	cursor: pointer;
+	margin: 10px 0px;
+	border: none;
+	border-radius: 40px;
+	padding: 10px 35px;
+	background: linear-gradient(120deg,#1414b5,#7b13a1);
+	color: #fff;
+	font-size: 20px;
+}
+.banner-login{
+	background: linear-gradient(60deg,#342694,#5b177a);
+}
+
+	.banner-login{
+	  height: 100vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+}
+	.img-logo{
+		position: relative;
+		top: -30px;
+		margin: 15px 0px;
+		padding: 10px 0px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+	.text-login{
+		width: 100%;
+	}
+		.text-login p{
+			font-size: 15px;
+			font-weight: 600;
+			color: #ddd;
+			padding: 10px;
+			text-align: center;
+		}
+
+		.btn-create-account{
+			cursor: pointer;
+			color: #eee;
+			margin: 10px 0px;
+			padding: 10px 30px;
+			font-size: 18x;
+			font-weight: 600;
+			border-radius: 50px;
+			outline: none;
+			border: none;
+			background: linear-gradient(120deg,#1414b5,#7b13a1);
+		}
+	.img-logo i{
+		color:#fff;
+       font-size: 45px;
+}
+	.img-logo h3{
+		color:#fff;
+		font-weight: 400;
+       font-size: 25px;
+}
+	.login-description {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+}
+	.title-of-welcome h3{
+     font-size: 35px;
+     color: #eee;
+}
+.options-signup{
+	padding: 10px 0px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.options-signup p{
+	font-size: 15px;
+	font-weight: 400;
+	color: #fff;
+}
+
+.icons-options-signup{
+ margin: 10px 0px;
+ list-style: none;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ color: #fff;
+
+}
+.icons-options-signup .item-icon-singup{
+	padding: 8px;
+}
 .nav{
 	height: 100%;
 	display: flex;
@@ -100,6 +289,10 @@ img{
 	letter-spacing: 1px;
 	font-weight: 700;
 	text-transform: uppercase;
+}
+
+.btn-signup-secun{
+	display: none;
 }
 
 .main{
@@ -605,6 +798,13 @@ i{
 	  	 cursor: pointer;
        display: block;
 	  }
+	  .conteiner-login {
+      flex-wrap: wrap;
+	  }
+	  .banner-login{
+     width: 100%;
+
+	  }
 	  .search-place{
         width: 170px;
 	  }
@@ -636,14 +836,34 @@ i{
 	  .conteiner-playList-favorite.visible{
 	  	width: 100%;
 	  }
+	  .btn-signup-secun{
+	  	display: block;
+	  }
 }
 
+@media screen and (max-width:810px){
+	.banner-login{
+		width: 100%;
+		padding: 70px 0px;
 
+	}
+.conteiner-login.visible{
+	flex-wrap: wrap;
+}	
+	.banner-login p{
+		text-align: center;
+		font-size: 13px;
+	}
+	.content-form{
+		width: 100%;
+	}
+}
 @media screen and (max-width:500px){
 	.favorite-music h2 {
 		font-size: 40px;
 	}
 	.titulo-of-list h2 {
+ 
 		font-size: 40px;
 	}
 	.search-place-2{
