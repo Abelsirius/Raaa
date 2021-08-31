@@ -90,6 +90,10 @@ for (let i = 0; i < audio.length; i++) {
 let search = document.querySelector(".title-music-type-rock");
 
 search.addEventListener("click",()=>{
+    let typeMusic = document.querySelector(".type-music");
+    if (typeMusic.classList.toString().includes("active")) {
+        typeMusic.classList.remove("active");
+    }
     let buscardor = document.querySelector(".search");
     buscardor.classList.toggle("active");
 })
@@ -99,6 +103,10 @@ let crealist = document.querySelector(".option-create-list");
 
 
 crealist.addEventListener("click",()=>{
+    let typeMusic = document.querySelector(".type-music");
+    if (typeMusic.classList.toString().includes("active")) {
+        typeMusic.classList.remove("active");
+    }
     let content = document.querySelector(".conteiner-playList-favorite");   
     let contentPreview = document.querySelector(".content-music-preview");
     let conteinerAvatar = document.querySelector(".conteiner-playList");
@@ -114,6 +122,10 @@ let favoriteList = document.querySelector(".option-favorite-music");
 
 
 favoriteList.addEventListener("click",()=>{
+    let typeMusic = document.querySelector(".type-music");
+    if (typeMusic.classList.toString().includes("active")) {
+        typeMusic.classList.remove("active");
+    }
     let content = document.querySelector(".conteiner-playList-favorite");
     let contentPreview = document.querySelector(".content-music-preview");
     let conteinerAvatar = document.querySelector(".conteiner-playList");   
@@ -128,6 +140,10 @@ let inicioBtn = document.querySelector(".visibily-home");
 
 
 inicioBtn.addEventListener("click",()=>{
+    let typeMusic = document.querySelector(".type-music");
+    if (typeMusic.classList.toString().includes("active")) {
+        typeMusic.classList.remove("active");
+    }
     let content = document.querySelector(".conteiner-playList-favorite");
     let contentPreview = document.querySelector(".content-music-preview");
     let conteinerAvatar = document.querySelector(".conteiner-playList");
