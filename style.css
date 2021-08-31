@@ -63,6 +63,31 @@ img{
 .login{
 	padding: 0px 15px;
 }
+.search{
+	display: none;
+    position: relative;
+}
+.search.active{
+	display: block;
+}
+.search .ri-search-line{
+    position: absolute;
+    color: #ccc;
+    top: 10px;
+    left: 15px;
+    font-size: 25px;
+}
+.search-place{
+    border-radius: 50px;
+    outline: none;
+    border: none;
+    width: 350px;
+    height: 45px;
+    color: #222 ;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 4px 10px 4px 50px;
+}
 .btn-login{
 	cursor: pointer;
 	padding: 10px 20px;
@@ -92,13 +117,255 @@ img{
 	height: 100%;
 }
 
+.content-music-preview.hidden{
+     display: none;
+}
+
+.conteiner-playList{
+	display: none;
+	align-items: center;
+	flex-direction: column;
+
+}
+.conteiner-playList-favorite{
+	display: none;
+	align-items: center;
+	flex-direction: column;
+}
+.conteiner-playList-favorite.visible{
+  display: flex;
+  width: 70%;
+}
+.conteiner-playList.visible{
+	display: flex;
+	width: 70%;
+	background: #999;
+}
+
+.content-principal{
+	   background: linear-gradient(180deg , #666 , #222);
+	   display: flex;
+      height: 550px;
+      width: 100%;
+      justify-content: flex-start;
+      align-items: flex-end;
+}
 .title-music-type{
    padding: 0px 20px;
 	height: 100%;
 	display: flex;
 	flex-direction: column;
 }
+.conteiner-avatar{
+	cursor: pointer;
+	position: relative;
+	 margin: 40px 20px;
+	 background: #222;
+	 box-shadow: 1px 15px 35px 5px #1118;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.conteiner-avatar:hover .content-avatar i{
+    opacity: 0;
+    visibility: hidden;
 
+}
+.conteiner-avatar:hover .pick-photo{
+      opacity: 1;
+      visibility: visible;
+}
+.content-avatar i{
+	font-size: 60px;
+	font-weight: 100;
+	color: #ccc;
+	transition: .7s;
+}
+.content-avatar-description{
+        width: fit-content;
+        height: 200px;
+        display: flex;
+        justify-content:flex-end;
+        align-items: flex-start;
+        flex-direction: column;
+        margin: 40px 0px;
+}
+	.content-avatar-description h3{
+         font-size: 20px;
+         color: #fff;
+}
+.titulo-of-list h2{
+	color: #fff;
+	font-size: 90px;
+}
+.name-of-user p{
+  color: #fff;
+  font-size: 20px;
+}
+
+
+.content-secundario{
+	  background: linear-gradient(180deg , #222 , #121212);
+	  width:100%;
+     display: flex;
+     justify-content: flex-start;
+     align-items: flex-start;
+     flex-direction: column;
+     height: 100%;
+}
+
+.title-description{
+	padding: 50px 0px 9px 40px;
+}
+.title-description p{
+	padding: 10px 0px;
+	color: #fff;
+	font-size: 25px;
+	font-weight: 900;
+}
+	.search-music-for-playList{
+    position: relative;
+}
+
+	.search-music-for-playList i{
+      position: absolute;
+      top: 8px;
+      left: 55px;
+      color: #ddd;
+ }
+	.search-place-2{
+		color: #eee;
+		background: #333;
+     width: 300px;
+     height: 40px;
+     padding: 5px 5px 5px 50px;
+     outline: none;
+     border: none;
+     border-radius: 5px;
+
+}
+.search-music-for-playList{
+	 padding: 0px 0px 0px 40px;
+}
+
+.pick-photo{
+	opacity: 0;
+	visibility: hidden;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	transition: .7s;
+}
+.pick-photo i{
+     font-size: 55px;
+     color: #fff;
+}
+.pick-photo p{
+	font-size: 20px;
+	color: #fff;
+}
+
+	.title-description i{
+	 display: inline-block;
+	 font-size: 30px;
+    padding: 20px;
+    background: #672ad1;
+    border-radius: 50%;
+    color: #fff;
+    margin: 10px 0px;
+}
+
+	.list-of-music{
+  width: 100%;
+  height: 100%;
+}
+
+.info-about-musics{
+	margin: 0px 40px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   border-bottom: 1px solid #ccc8;
+}
+
+
+	.title-info span{
+		color: #ccc;
+		font-size: 15px;
+     padding: 0px 20px;
+
+}
+.time-music i{
+	color: #ccc;
+	font-size: 25px;
+	padding: 0px 20px;
+}
+
+.music-of-list-every-one{
+	padding: 10px 0px 5px 0px;
+   margin: 0px 40px;
+   height: 100%;
+}
+
+.music-of-list-every-one div{
+     padding: 2px 3.5px;
+}
+.row-info-music{
+	cursor: pointer;
+	border-radius: 5px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 10px 5px;
+   transition:  .7s background;
+}
+
+.row-info-music:hover{
+	background: #555;
+}
+	.name-music-y-autor{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+	.number-music span{
+    color: #ccc;
+    font-size: 18px;
+    padding: 0px 3px;
+}
+
+	.data-name-autor span{
+    color: #fff;
+}
+ 	.data-name-autor h3{
+ 		color: #ccc;
+ 	}
+
+	.imbe{
+   width: 40px;
+   height: 40px;
+}
+	.imbe img{
+		width: 100%;
+		height: 100%;
+}
+	.duration-music-info{
+     display: flex;
+     justify-content: space-around;
+     align-items: center;
+}
+	.duration-music-info i {
+     color:#672ad1;
+     margin: 0px 15px;
+	}
+		.duration-music-info p{
+			font-size: 15px;
+			color: #ccc;
+		}
 .type{
    display: flex;
    justify-content: flex-start;
@@ -111,6 +378,23 @@ img{
    transition: .7s color;
 }
 
+.color-blue{
+   background: linear-gradient(120deg, #672ad1 ,#9dedba);
+}
+.bg-blue{
+  background: linear-gradient(180deg,#4e3897 ,#2c1f56);
+}
+.content-avatar i{
+    color: #fff;
+}
+.color-blue:hover .ri-heart-fill{
+	opacity: 1 !important;
+	visibility: visible !important;
+   color: #db1869 !important;
+}
+.favorite-music h2{
+	font-size: 60px;
+}
 .type:hover{
 	color: #Fff;
 }
@@ -222,6 +506,8 @@ i{
 	width: 900px;
 	margin: 10px 0px;
    display: flex;
+    position: relative;
+    top: 0px;
 }
 
 .musica-list{
@@ -319,6 +605,9 @@ i{
 	  	 cursor: pointer;
        display: block;
 	  }
+	  .search-place{
+        width: 170px;
+	  }
 	  .login{
        display: none;
 	   }
@@ -341,4 +630,23 @@ i{
 	   .content-music-preview{
          width: 100%;
 	   }
+	   .conteiner-playList.visible{
+         width: 100%;
+	   }
+	  .conteiner-playList-favorite.visible{
+	  	width: 100%;
+	  }
+}
+
+
+@media screen and (max-width:500px){
+	.favorite-music h2 {
+		font-size: 40px;
+	}
+	.titulo-of-list h2 {
+		font-size: 40px;
+	}
+	.search-place-2{
+		width: 250px;
+	}
 }
