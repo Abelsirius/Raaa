@@ -222,3 +222,175 @@ for (let i = 0; i < arrNumbers.length; i++) {
     })
 
 }
+
+
+let file = document.querySelector(".load-avatar");
+
+file.addEventListener("change",()=>{
+   let avatar = file.files[0];
+   mostrarAvatar(avatar);
+})
+
+
+
+const mostrarAvatar = (archivo) =>{
+
+    const render = new FileReader();
+    render.readAsDataURL(archivo);
+    render.addEventListener("load",(e)=>{
+        let url =  e.currentTarget.result;
+        let urlSaveAvatar = localStorage.setItem("url-avatar", url);
+        let avatar = document.querySelector(".content-avatar");
+        let pickAvatar = document.querySelector(".pick-photo");
+        let contentAvatar = document.querySelector(".content-file-avatar");
+        let img = document.createElement("IMG");
+        avatar.style.display = "none";
+        img.setAttribute("src",url);
+        img.style.position= "absolute";
+        img.style.objectFit ="fill";
+        if (contentAvatar.children.length == 1) {
+            contentAvatar.appendChild(img);
+        }else{
+            contentAvatar.removeChild(contentAvatar.children[1]);
+            contentAvatar.appendChild(img);
+        }
+     })
+
+}
+
+
+const cargarAvatar = () =>{
+   if (localStorage.getItem("url-avatar")) {
+      let url =  localStorage.getItem("url-avatar");
+      let img = document.createElement("IMG");
+      let contentAvatar = document.querySelector(".content-file-avatar"); 
+        img.setAttribute("src",url);
+        img.style.position= "absolute";
+        img.style.objectFit ="fill";
+        if (contentAvatar.children.length == 1) {
+            contentAvatar.appendChild(img);
+        }else{
+            contentAvatar.removeChild(contentAvatar.children[1]);
+            contentAvatar.appendChild(img);
+        }
+      
+   }else{
+      console.log("no existe un avatar")
+   }
+}
+
+
+window.addEventListener("load",cargarAvatar)
+
+
+const avatarDescription = document.querySelector(".content-avatar-description");
+const settingsAvatar = document.querySelector(".icon-config");
+const settingsAvatarSave = document.getElementById("ri-pencil-line");
+
+const contentEditable = ()=>{
+    if (settingsAvatar.classList.toString().includes("active") != true) {
+    settingsAvatar.classList.add("active");
+    settingsAvatar.children[0].classList.replace("ri-settings-3-fill","ri-pencil-line");
+    settingsAvatar.children[0].style.color = "#ccc";
+    settingsAvatar.children[0].style.fontSize = "25px";
+    let arrEditable = [avatarDescription.children[1],avatarDescription.children[2]]
+    for (let i = 0; i < arrEditable.length; i++) {
+      arrEditable[i].classList.add("bg-editable");  
+      arrEditable[i].children[0].setAttribute("contenteditable","true");
+    }
+
+    }
+    else {
+          let arrEditable = [avatarDescription.children[1],avatarDescription.children[2]]
+          settingsAvatar.classList.remove("active");
+         if (arrEditable[0].children[0].textContent.length > 13 || arrEditable[1].children[0].textContent.length > 24) {
+            console.log(arrEditable[0],arrEditable[1])
+             alert(" el nombre de  tu play list, porfavor intenta q no sea mas de 13 caracteres y en tu nombre no mas de 24 , lo justo y necesario pe chato:V")
+         }else{
+            contentEditableSave();
+         }
+         }
+   }
+
+
+
+const contentEditableSave = () =>{
+ settingsAvatar.children[0].classList.replace("ri-pencil-line","ri-settings-3-fill");
+ let arrEditable = [avatarDescription.children[1],avatarDescription.children[2]]
+ for (let i = 0; i < arrEditable.length; i++) {
+     arrEditable[i].children[0].removeAttribute("contenteditable");
+     arrEditable[i].classList.remove("bg-editable");
+ }
+
+}
+
+ let arrEditable = [avatarDescription.children[1],avatarDescription.children[2]]
+
+ for (let i = 0; i < arrEditable.length; i++) {
+     arrEditable[i].addEventListener("keyup",(e)=>{
+        let parentNode = document.querySelector(".bg-editable");
+         if (parentNode.children[0] == undefined){
+            let h2 = document.createElement("H2");
+            h2.classList.add("miLista");
+            h2.style.padding = "0px 5px";
+            parentNode.appendChild(h2)
+         }
+         if (e.keyCode == 13) {
+            if (e.target.childNodes.length != 1) {
+                for (let i = 1; i < e.target.childNodes.length; i++) {
+                    e.target.removeChild(e.target.childNodes[i]);
+                    if (e.target.childNodes[0].textContent.length > 13) {
+                        alert("el nombre de  tu play list, porfavor intenta q no sea mas de 13 caracteres y en tu nombre no mas de 24 , lo justo y necesario  pe chato:V")
+                    }else{
+                        contentEditableSave()
+                    }
+                }
+            }
+         }
+     })
+ }
+
+settingsAvatar.addEventListener("click",contentEditable)
+
+
+
+let rowPlayPause = document.querySelectorAll(".row-info-music");
+
+// const playRow = ()=>{
+//     let audio = document.querySelector(".row-music");
+//     if (audio.paused) {
+//         audio.play();
+//     }else{
+//         audio.pause();
+//     }
+// }
+
+const playRow = (e) =>{
+   let cajaPadre = e.currentTarget.children[0].children[1];
+   let contentspectro = document.querySelector(".number-music");
+   console.log(cajaPadre)
+   if (cajaPadre.paused){
+    let audio = document.querySelectorAll(".row-music");
+       for (let i = 0 ; i < audio.length; i++) {
+           if (audio[i].paused) {
+           }else{
+              audio[i].pause()
+              for (let i = 0; i < arrIcon.length; i++) {
+                  arrIcon[i].classList.replace("ri-pause-fill","ri-play-fill")
+              }
+           } 
+
+       }
+      cajaPadre.play()   
+   } 
+    
+    else{
+     cajaPadre.pause();
+     e.target.classList.replace("ri-pause-fill","ri-play-fill");
+   }
+  e.stopPropagation();
+}
+
+for (let i = 0; i < rowPlayPause.length; i++) {
+    rowPlayPause[i].addEventListener("click",playRow)
+}
