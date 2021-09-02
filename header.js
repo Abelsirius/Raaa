@@ -394,3 +394,77 @@ const playRow = (e) =>{
 for (let i = 0; i < rowPlayPause.length; i++) {
     rowPlayPause[i].addEventListener("click",playRow)
 }
+
+
+
+const btnLogin = document.querySelector(".btn-iniciar");
+
+
+const saveData = (e)=>{
+ e.preventDefault();   
+ let name = document.querySelector(".name-user").value;
+ let gmail = document.querySelector(".gmail").value;
+ let password = document.querySelector(".password").value;
+
+ if (name.length <=2 || name.length > 24) {
+    alert("Por favor envitar que el nombre tenga menos de 2 caracteres o mas de 24 caracteres")
+ }else{
+    localStorage.setItem("name-user",name)
+ }
+
+ if (gmail.includes("@") == false || gmail.includes(".com") == false || gmail.includes("gmail") == false ) {
+       alert("gmail Incorrecto")
+ }else{
+    localStorage.setItem("gmail",gmail)
+ }
+
+ if (password.length <=6) {
+     alert("password Debil")
+ }else{
+    localStorage.setItem("password",password)
+}
+ history.go(0)
+}
+
+
+
+btnLogin.addEventListener("click",saveData)
+
+const setDatas = () =>{
+    if (localStorage.getItem("name-user")) {
+    let btnLoginSecun = document.querySelector(".btn-signup-secun");    
+    let btnLogin = document.querySelector(".btn-login");
+    let contentAvatar = document.querySelector(".user-avatar");
+    let conteinerAvatarDos = document.querySelector(".avatar-dos");
+    btnLogin.style.display = "none";
+    btnLoginSecun.style.display = "none";
+    contentAvatar.style.display = "flex";
+    conteinerAvatarDos.style.display = "flex";
+
+    let imgAvatar = document.createElement("IMG");
+    if (localStorage.getItem("url-avatar")) {
+        imgAvatar.setAttribute("src",localStorage.getItem("url-avatar"))
+        conteinerAvatarDos.appendChild(imgAvatar);
+      let span = document.createElement("P");
+      span.classList.add("name-user-save");
+      span.textContent = localStorage.getItem("name-user");
+      conteinerAvatarDos.appendChild(span);
+      
+    }else{
+      let iAvatar = document.createElement("I");
+      iAvatar.classList.add("ri-user-fill")
+      let span = document.createElement("P");
+      span.classList.add("name-user-save");
+      span.textContent = localStorage.getItem("name-user");
+      conteinerAvatarDos.appendChild(iAvatar);
+      conteinerAvatarDos.appendChild(span);
+    }
+
+    let nameFavorite = document.querySelectorAll(".name-of-user");
+    for (let i = 0; i < nameFavorite.length; i++) {
+        nameFavorite[i].children[0].textContent = localStorage.getItem("name-user");
+    }
+ }  
+}
+
+window.addEventListener("DOMContentLoaded",setDatas)
