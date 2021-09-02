@@ -8,6 +8,14 @@ body{
 	box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+    width: 6px;
+    background-color: #8488fa;
+}
+::-webkit-scrollbar-thumb {
+    height: 5px;
+    background: #373b9e;
+}
 header{
 	position: fixed;
 	width: 100%;
