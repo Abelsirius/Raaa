@@ -645,7 +645,7 @@ placeSearch.addEventListener("keyup",(e)=>{
             cajaSerachResult.removeChild(cajaSerachResult.children[i]);
         }
     }
-  if (e.currentTarget.value.length > 1) {
+  if (e.currentTarget.value.length >= 1) {
        for (let i = 0; i < infoMusic.length; i++) {
           if (infoMusic[i].name.toLowerCase().replace(/\s+/g, '').includes(place.toLowerCase().replace(/\s+/g, '')) || infoMusic[i].artista.toLowerCase().replace(/\s+/g, '').includes(place.toLowerCase().replace(/\s+/g, '')) || infoMusic[i].siglas.toLowerCase().replace(/\s+/g, '').includes(place.toLowerCase().replace(/\s+/g, ''))) {
           cajaSerachResult.innerHTML = "";
