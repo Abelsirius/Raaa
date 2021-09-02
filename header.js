@@ -468,3 +468,192 @@ const setDatas = () =>{
 }
 
 window.addEventListener("DOMContentLoaded",setDatas)
+
+
+
+const infoMusic = [
+    
+      music = {
+        name:"Alone",
+        siglas: "AW",
+        artista: "Alan Walker" ,
+        img:"alone.jpg",
+        urlUdio :"alone.mp3"
+
+        },
+       music = {
+        name:"Attack Of The Sloth",
+        artista: "Goblins from mars",
+        siglas:"GBM",
+        img :"sloth.jpg",
+        urlUdio :"attackSloth.mp3" 
+        },
+      music = {
+          name : "Stay With Me",
+          artista : "Mendum",
+          siglas : "M",
+          img :"ncs.png",
+          urlUdio :"stayWithMe.mp3"
+      },
+      music = {
+          name : "Stay",
+          artista : "The Kid LAROI, Justin Bieber",
+          siglas : "TK",
+          img :"stay.jpg",
+          urlUdio :"stay.mp3"
+      }, 
+      music = {
+        name:"Forbidden Voices",
+        artista: "Martin Garrix",
+        siglas : "Ma",
+        img :"prohibido.jpg",
+        urlUdio :"prohibido.mp3"  
+        },
+       music = {
+        name:"The Only Way Is Up",
+        artista: "Martin Garrix & Tiesto",
+        siglas : "Mar",
+        img :"MxT.jpg",
+        urlUdio :"isUp.mp3"
+        },
+      music = {
+          name : "Vintage 1930's Jazz Tove Lo",
+          artista : "Haley Reinhart",
+          siglas : "tove",
+          img :"vintage.jpg",
+          urlUdio :"habiets.mp3"
+      },
+      music = {
+          name : "Byte",
+          artista : "Martin Garrix",
+          siglas : "Byt",
+          img :"byte.jpg",
+          urlUdio :"byte.mp3"
+      }, 
+      music = {
+        name:"In The Name Of Love",
+        artista: "Martin Garrix & Bebe Rexha",
+        siglas : "In The name",
+        img :"theLove.jpg",
+        urlUdio :"nameLove.mp3"  
+        },
+       music = {
+        name:"Arcade",
+        artista: "Duncan Laurence",
+        siglas : "Arca",
+        img :"arcade.jpg",
+        urlUdio :"Arcade.mp3"  
+        },
+      music = {
+          name : "Wasting my Young Years",
+          artista : "London Grammar",
+          siglas  : "Wasting",
+          img :"moose.jpg",
+          urlUdio :"moon.mp3"
+      },
+      music = {
+          name : "Fearless",
+          artista : "Lost Sky  Feat.Chris Linton",
+          siglas : "Fear",
+          img :"fearless.jpg",
+          urlUdio :"fearless.mp3"
+      },
+      music = {
+          name : "Tragedia, Comedia y Ficción",
+          artista : "Canserbero",
+          siglas : "Canser",
+          img :"can.jpg",
+          urlUdio :"comedia&ficcion.mp3"
+      }                            
+]
+
+console.log(infoMusic[12].artista.toLowerCase().includes("canserbero"))
+
+
+let placeSearch = document.querySelector(".search-place");
+let btnSearch = document.querySelector(".ri-search-line");
+
+const createViewMusic = (nMusic,nArtista,urlImg,urlMusic)=>{
+   
+   let cajaPadreResults = document.querySelector(".search-results");
+    cajaPadreResults.style.height = "300px";
+    cajaPadreResults.style.transition = ".3s";
+
+    let divResults = document.createElement("DIV");
+    let divImgBc = document.createElement("DIV");
+    let divNameMusic = document.createElement("DIV");
+    let Music = document.createElement("DIV");
+  
+    let img = document.createElement("IMG");
+    let p = document.createElement("P");
+    let h3 = document.createElement("H3");
+    let audio = document.createElement("AUDIO");
+    let source = document.createElement("SOURCE");
+   
+  
+   source.setAttribute("src",urlMusic)
+   source.setAttribute("type","audio/mp3")
+    Music.classList.add("content-music-search")
+    audio.classList.add("music-search")
+    divResults.classList.add("result-music");
+    divImgBc.classList.add("imgbc");
+    divNameMusic.classList.add("name-of-music");
+
+    img.setAttribute("src",urlImg);
+    p.textContent = nMusic;
+    h3.textContent = nArtista;
+
+    audio.appendChild(source)
+    Music.appendChild(audio)
+    
+    divImgBc.appendChild(img);
+    divNameMusic.appendChild(p)
+    divNameMusic.appendChild(h3)
+
+
+
+    divResults.appendChild(divImgBc)
+    divResults.appendChild(divNameMusic);
+    divResults.appendChild(Music)
+
+   divResults.addEventListener("click",(e)=>{
+       if (e.currentTarget.children[2].children[0].paused) {
+        console.log("yes")
+        e.currentTarget.children[2].children[0].play();
+      }else{
+        e.currentTarget.children[2].children[0].pause();
+      }
+   })
+
+    cajaPadreResults.appendChild(divResults);
+
+
+}
+
+let string = "p u t a m a d r e";
+
+console.log(string.replace(/\s+/g, '')); 
+
+placeSearch.addEventListener("keyup",(e)=>{
+     let cajaPadreResults = document.querySelector(".search-results");
+   let cajaSerachResult = document.querySelector(".search-results");
+    let place = e.target.value;
+  if (cajaSerachResult.children.length >= 0) {
+            cajaPadreResults.style.height = "0px";
+         cajaPadreResults.style.transition = ".3s";
+        for (let i = 0; i < cajaSerachResult.children.length; i++) {
+            cajaSerachResult.removeChild(cajaSerachResult.children[i]);
+        }
+    }
+  if (e.currentTarget.value.length > 1) {
+       for (let i = 0; i < infoMusic.length; i++) {
+          if (infoMusic[i].name.toLowerCase().replace(/\s+/g, '').includes(place.toLowerCase().replace(/\s+/g, '')) || infoMusic[i].artista.toLowerCase().replace(/\s+/g, '').includes(place.toLowerCase().replace(/\s+/g, '')) || infoMusic[i].siglas.toLowerCase().replace(/\s+/g, '').includes(place.toLowerCase().replace(/\s+/g, ''))) {
+          cajaSerachResult.innerHTML = "";
+         createViewMusic(infoMusic[i].name,infoMusic[i].artista,infoMusic[i].img,infoMusic[i].urlUdio);   
+          }
+      }  
+  }
+   
+})
+
+
