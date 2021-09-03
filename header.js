@@ -659,8 +659,14 @@ const createViewMusic = (nMusic,nArtista,urlImg,urlMusic)=>{
     divResults.appendChild(Music)
 
    divResults.addEventListener("click",(e)=>{
+        // codeReproductorMusic(e.currentTarget.children[2].children[0]);
        if (e.currentTarget.children[2].children[0].paused) {
-        console.log("yes")
+          let audioSearch = document.querySelectorAll(".music-search")
+           for (let i = 0; i < audioSearch.length; i++) {
+               if (audioSearch[i].play) {
+                audioSearch[i].pause();
+               }
+           }
         e.currentTarget.children[2].children[0].play();
       }else{
         e.currentTarget.children[2].children[0].pause();
@@ -679,8 +685,7 @@ console.log(string.replace(/\s+/g, ''));
 placeSearch.addEventListener("keyup",(e)=>{
    let cajaSerachResult = document.querySelector(".search-results");
    if (cajaSerachResult.children) {
-       cajaSerachResult.innerHTML = "";
-       }
+       cajaSerachResult.innerHTML = "";}
     let place = e.target.value;
   if (cajaSerachResult.children.length >= 0) {
             cajaSerachResult.style.height = "0px";
