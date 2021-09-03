@@ -677,12 +677,14 @@ let string = "p u t a m a d r e";
 console.log(string.replace(/\s+/g, '')); 
 
 placeSearch.addEventListener("keyup",(e)=>{
-     let cajaPadreResults = document.querySelector(".search-results");
    let cajaSerachResult = document.querySelector(".search-results");
+   if (cajaSerachResult.children) {
+       cajaSerachResult.innerHTML = "";
+       }
     let place = e.target.value;
   if (cajaSerachResult.children.length >= 0) {
-            cajaPadreResults.style.height = "0px";
-         cajaPadreResults.style.transition = ".3s";
+            cajaSerachResult.style.height = "0px";
+         cajaSerachResult.style.transition = ".3s";
         for (let i = 0; i < cajaSerachResult.children.length; i++) {
             cajaSerachResult.removeChild(cajaSerachResult.children[i]);
         }
@@ -690,8 +692,7 @@ placeSearch.addEventListener("keyup",(e)=>{
   if (e.currentTarget.value.length >= 1) {
        for (let i = 0; i < infoMusic.length; i++) {
           if (infoMusic[i].name.toLowerCase().replace(/\s+/g, '').includes(place.toLowerCase().replace(/\s+/g, '')) || infoMusic[i].artista.toLowerCase().replace(/\s+/g, '').includes(place.toLowerCase().replace(/\s+/g, '')) || infoMusic[i].siglas.toLowerCase().replace(/\s+/g, '').includes(place.toLowerCase().replace(/\s+/g, ''))) {
-          cajaSerachResult.innerHTML = "";
-         createViewMusic(infoMusic[i].name,infoMusic[i].artista,infoMusic[i].img,infoMusic[i].urlUdio);   
+            createViewMusic(infoMusic[i].name,infoMusic[i].artista,infoMusic[i].img,infoMusic[i].urlUdio);   
           }
       }  
   }

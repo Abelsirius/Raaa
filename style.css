@@ -17,7 +17,16 @@ header{
 
 }
 header.activeBg{
-	background: #1119;
+	background: rgba(233, 34, 190, 0.8);
+}
+
+::-webkit-scrollbar{
+      width: .60rem;
+      background: rgba(233, 34, 190, 0.8);
+}
+
+::-webkit-scrollbar-thumb{
+	  background: #54113f;
 }
 
 .user-avatar{
@@ -41,7 +50,7 @@ header.activeBg{
 }
 .avatar-dos:hover{
    cursor: pointer;
-	background: #373845;
+	background: rgba(233, 34, 170, 0.7);
 }
 .avatar-dos  i{
 	margin-right:  5px;
@@ -95,7 +104,7 @@ header.activeBg{
 	width:250px;
 	height: 170px;
 	clip-path: polygon(79% 10%, 66% 25%, 44% 29%, 25% 52%, 16% 79%, 0 100%, 0 80%, 0 66%, 0 0, 100% 0);
-	background: #7b13a1;
+	background: #e922be;
 }
 .content-form::after{
 	content: "";
@@ -106,7 +115,7 @@ header.activeBg{
 	width:250px;
    clip-path: polygon(23% 43%, 40% 58%, 50% 76%, 74% 84%, 100% 100%, 0 100%, 0 80%, 0 66%, 0 0, 14% 16%);
 	height: 170px;
-	background: #7b13a1;
+	background: #e922be;
 }
 	.form{
 	padding: 10px 40px;
@@ -121,7 +130,7 @@ header.activeBg{
 	color:#fff;
 	font-size: 20px;
 	padding: 20px;
-	background: linear-gradient(130deg , #9911a6 ,#321d91);
+	background: linear-gradient(130deg , #e922be ,#ff8bff);
 	clip-path: polygon(94% 6%, 94% 39%, 100% 70%, 77% 97%, 40% 77%, 0 100%, 8% 51%, 0 0, 35% 15%, 67% 0);
 	border-radius: 60px;
 
@@ -145,7 +154,7 @@ header.activeBg{
     outline: none;
     font-weight: 600;
     border-bottom: 1.5px solid #1112;
-    color: #356fd4;
+    color: #e922be;
     font-size: 18px;
     border-radius: 20px;
 
@@ -158,7 +167,7 @@ header.activeBg{
    position: absolute;
    top: 18px;
    left: 15px;
-   color: #004bc4;
+   color: #e922be;
 }
 .btn-iniciar{
 	cursor: pointer;
@@ -166,12 +175,12 @@ header.activeBg{
 	border: none;
 	border-radius: 40px;
 	padding: 10px 35px;
-	background: linear-gradient(120deg,#1414b5,#7b13a1);
+	background: linear-gradient(120deg,#e922be ,#ff8bff);
 	color: #fff;
 	font-size: 20px;
 }
 .banner-login{
-	background: linear-gradient(60deg,#342694,#5b177a);
+	background: linear-gradient(60deg,#e922be ,#ff8bff);
 }
 
 	.banner-login{
@@ -280,7 +289,7 @@ header.activeBg{
 }
 
 .menu i{
-	color: #0062ff;
+	color: #e922be;
 }
 
 img{
@@ -295,7 +304,7 @@ img{
 
 .logo i{
 	font-size: 30px;
-	color: #0062ff;
+	color: #e922be;
 	transform: translateY(2px);
 }
 .login{
@@ -310,22 +319,27 @@ img{
 }
 .search .ri-search-line{
     position: absolute;
-    color: #ccc;
+    color: #eb3bc7;
     top: 10px;
     left: 15px;
     font-size: 25px;
 }
 .search-place{
+	 background: #78065f;
     border-radius: 50px;
     outline: none;
     border: none;
     width: 350px;
     height: 45px;
-    color: #222 ;
+    color: #fcf7fb;
     font-size: 18px;
     font-weight: 400;
     padding: 4px 10px 4px 50px;
 
+}
+
+.search-place::placeholder{
+	color: #ffe8fa;
 }
 
 
@@ -335,7 +349,7 @@ img{
 	width: 100%;
 	height: 0px;
 	border-radius: 10px;
-	background: #fff;
+	background: rgb(233 34 190 / 90%);
 	overflow: hidden;
 	overflow-y: scroll;
 
@@ -348,7 +362,7 @@ img{
 
 }
 	.result-music:hover{
-      background: #bbb;
+      background: #ed87d7;
 	}
 
 	.imgbc{
@@ -365,10 +379,12 @@ img{
 	flex: 1;
 }
 	.name-of-music p{
+		color: #f5b8e7;
       font-size: 15px;
       font-weight: lighter;
 }
  .name-of-music h3{
+ 	color: #78065f;
 	font-size: 15px;
 }
 .time-music p{
@@ -401,6 +417,7 @@ img{
 }
 
 .type-music{
+   background: #5e1447;	
 	position: relative;
    width: 30%;
 	height: 100%;
@@ -920,7 +937,7 @@ i{
      position: absolute;
      right: 10px;
      bottom: 10px;
-     background: #2c24bf;
+     background: #f222c5;
      border-radius: 50%;
      opacity: 0;
      visibility: hidden;
@@ -928,7 +945,7 @@ i{
      transition: .3s;
 }
 .btn-pick-music:hover{
-	 background: #5952e3;
+	 background: #e35dc6;
 }
 .btn-pick-music .ri-play-fill{
 	  display: inline-block;
@@ -987,7 +1004,7 @@ i{
 	   transform: translateX(-100%);
 	   position: fixed;
 	   z-index: 50;
-	   background: #041329;
+	   background: #5e1447;
 	   top: 0;
 	   width: fit-content;
 	   transition: .7s transform;
