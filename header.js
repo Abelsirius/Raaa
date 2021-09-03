@@ -604,8 +604,8 @@ const infoMusic = [
           name : "This Is What You Came For",
           artista : "Calvin Harris ft.Rihanna",
           siglas : "TIWYCF",
-          img :"thisIs.jpg",
-          urlUdio :"thisIs.mp3"
+          img :"thisIS.jpg",
+          urlUdio :"thisIS.mp3"
       }                                                                 
 ]
 
