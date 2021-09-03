@@ -976,6 +976,9 @@ i{
 	  	 font-size: 10px;
 
 	}
+	.title-logo{
+     font-size: 20px;
+	}
 	  .menu{
 	  	 cursor: pointer;
        display: block;
