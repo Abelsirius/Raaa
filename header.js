@@ -564,7 +564,49 @@ const infoMusic = [
           siglas : "Canser",
           img :"can.jpg",
           urlUdio :"comedia&ficcion.mp3"
-      }                            
+      },
+      music = {
+          name : "Need To Know",
+          artista : "Doja Cat",
+          siglas : "DJ",
+          img :"doja.jpg",
+          urlUdio :"toKnow.mp3"
+      },
+      music = {
+          name : "Juicy",
+          artista : "Doja Cat & Tyga",
+          siglas : "JC",
+          img :"doja.jpg",
+          urlUdio :"juicy.mp3"
+      },
+      music = {
+          name : "Send Me On My Way ",
+          artista : "Rusted Root",
+          siglas : "SMOMM",
+          img :"musicIce.jpg",
+          urlUdio :"musicIce.mp3"
+      },
+      music = {
+          name : "Chill Song",
+          artista : "Kamakawiwoʻole",
+          siglas : "CS",
+          img :"chill.jpg",
+          urlUdio :"chill.mp3"
+      },
+      music = {
+          name : "I Took a Pill In Ibiza",
+          artista : "Mike Posner",
+          siglas : "ITAPII",
+          img :"iTook.jpg",
+          urlUdio :"iTook.mp3"
+      },
+      music = {
+          name : "This Is What You Came For",
+          artista : "Calvin Harris ft.Rihanna",
+          siglas : "TIWYCF",
+          img :"thisIs.jpg",
+          urlUdio :"thisIs.mp3"
+      }                                                                 
 ]
 
 console.log(infoMusic[12].artista.toLowerCase().includes("canserbero"))
