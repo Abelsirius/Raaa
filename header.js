@@ -612,8 +612,11 @@ const infoMusic = [
 console.log(infoMusic[12].artista.toLowerCase().includes("canserbero"))
 
 
+
 let placeSearch = document.querySelector(".search-place");
 let btnSearch = document.querySelector(".ri-search-line");
+
+
 
 const createViewMusic = (nMusic,nArtista,urlImg,urlMusic)=>{
    
@@ -658,21 +661,129 @@ const createViewMusic = (nMusic,nArtista,urlImg,urlMusic)=>{
     divResults.appendChild(divNameMusic);
     divResults.appendChild(Music)
 
-   divResults.addEventListener("click",(e)=>{
-        // codeReproductorMusic(e.currentTarget.children[2].children[0]);
-       if (e.currentTarget.children[2].children[0].paused) {
-          let audioSearch = document.querySelectorAll(".music-search")
-           for (let i = 0; i < audioSearch.length; i++) {
+
+ const  codeReproductorMusic = (song,imgSong,nSong,nameArtista,audio)=>{
+    
+    let body = document.querySelector("body");
+
+    if (body.children.length > 4) {
+     for (let i = 0; i < body.children.length; i++) {
+        if (body.children[i].classList.contains("reproductor")) {
+        let audioSearch = document.querySelectorAll(".music-search");        
+        for (let i = 0; i < audioSearch.length; i++) {
                if (audioSearch[i].play) {
-                audioSearch[i].pause();
+                  audioSearch[i].pause();
                }
            }
-        e.currentTarget.children[2].children[0].play();
-      }else{
-        e.currentTarget.children[2].children[0].pause();
-      }
-   })
+            body.removeChild(body.children[i]);
+        }
+    }
 
+    }
+    let divContent = document.createElement("DIV");
+    divContent.classList.add("reproductor")
+
+    let divBanner = document.createElement("DIV");
+    divBanner.classList.add("banner-song");
+
+    let divOptions = document.createElement("DIV");
+    divOptions.classList.add("optiones-settings");
+
+    let img = document.createElement("IMG")
+    img.setAttribute("src",imgSong)
+
+    let songInfo = document.createElement("DIV");
+    songInfo.classList.add("song-info")
+
+    let p = document.createElement("P");
+    
+    p.textContent = nSong;
+
+    let h3 = document.createElement("H3");
+
+    h3.textContent = nameArtista;
+
+    let divLiked = document.createElement("DIV");
+    divLiked.classList.add("liked");
+
+    let i = document.createElement("I");
+    i.classList.add("ri-heart-fill");
+
+    let divControls = document.createElement("DIV")
+    divControls.classList.add("controls");
+
+    let divControlSuperior = document.createElement("DIV");
+    divControlSuperior.classList.add("controls-superior");
+
+    let contentBtnAnterior = document.createElement("DIV");
+    contentBtnAnterior.classList.add("iconsControls");
+
+    let imgBtnAnterior = document.createElement("IMG")
+    imgBtnAnterior.setAttribute("src","anterior.svg");
+
+    let divPlayPause = document.createElement("DIV");
+    divPlayPause.classList.add("iconsControls");
+
+    let btnPlayPause = document.createElement("I")
+    btnPlayPause.style.cursor = "pointer";
+    btnPlayPause.classList.add("ri-play-fill");
+
+    let contentBtnSiguiente = document.createElement("DIV");
+    contentBtnSiguiente.classList.add("iconsControls")
+
+    let imgBtnSiguiente = document.createElement("IMG");
+    imgBtnSiguiente.setAttribute("src","siguiente.svg");
+
+    let divDurationSong = document.createElement("DIV");
+    divDurationSong.classList.add("song-duration");
+
+    let divLineTime = document.createElement("DIV");
+    divLineTime.classList.add("line-time");
+
+    divBanner.appendChild(img)
+
+    songInfo.appendChild(p)
+    songInfo.appendChild(h3)
+
+    divBanner.appendChild(songInfo)
+
+    divLiked.appendChild(i)
+
+    divBanner.appendChild(divLiked)
+
+    contentBtnAnterior.appendChild(imgBtnAnterior)
+    divControlSuperior.appendChild(contentBtnAnterior)
+    divPlayPause.appendChild(btnPlayPause)
+    divControlSuperior.appendChild(divPlayPause)
+    contentBtnSiguiente.appendChild(imgBtnSiguiente)
+    divControlSuperior.appendChild(contentBtnSiguiente)
+
+    divControls.appendChild(divControlSuperior)
+    divDurationSong.appendChild(divLineTime)
+    divOptions.appendChild(divControls)
+
+    divContent.appendChild(divBanner)
+    divContent.appendChild(divOptions)
+     
+     btnPlayPause.addEventListener("click",(e)=>{
+       if (song.paused) {
+          e.currentTarget.classList.replace("ri-play-fill","ri-pause-fill");
+          song.play()
+       } else{
+          e.currentTarget.classList.replace("ri-pause-fill","ri-play-fill");        
+          song.pause();
+       }
+
+     })
+    body.appendChild(divContent);
+
+
+}
+
+   divResults.addEventListener("click",(e)=>{      
+    codeReproductorMusic(e.currentTarget.children[2].children[0],urlImg,nMusic,nArtista);
+   })
+  
     cajaPadreResults.appendChild(divResults);
 
 
@@ -680,17 +791,18 @@ const createViewMusic = (nMusic,nArtista,urlImg,urlMusic)=>{
 
 let string = "p u t a m a d r e";
 
-console.log(string.replace(/\s+/g, '')); 
+console.log(string.replaceAll(" ","")); 
 
 placeSearch.addEventListener("keyup",(e)=>{
    let cajaSerachResult = document.querySelector(".search-results");
    if (cajaSerachResult.children) {
        cajaSerachResult.innerHTML = "";}
-    let place = e.target.value;
+    let place = e.target.value
   if (cajaSerachResult.children.length >= 0) {
-            cajaSerachResult.style.height = "0px";
+         cajaSerachResult.style.height = "0px";
          cajaSerachResult.style.transition = ".3s";
         for (let i = 0; i < cajaSerachResult.children.length; i++) {
+            console.log(cajaSerachResult)
             cajaSerachResult.removeChild(cajaSerachResult.children[i]);
         }
     }
@@ -705,3 +817,16 @@ placeSearch.addEventListener("keyup",(e)=>{
 })
 
 
+
+
+      //  if (e.currentTarget.children[2].children[0].paused) {
+      //     let audioSearch = document.querySelectorAll(".music-search")
+      //      for (let i = 0; i < audioSearch.length; i++) {
+      //          if (audioSearch[i].play) {
+      //           audioSearch[i].pause();
+      //          }
+      //      }
+      //   e.currentTarget.children[2].children[0].play();
+      // }else{
+      //   e.currentTarget.children[2].children[0].pause();
+      // }

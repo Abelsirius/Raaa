@@ -1,0 +1,115 @@
+/*.container-bg-repro-song{
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1100000;
+	background: #e922be;
+	width: 100vw;
+	height: 100vh;
+}*/
+
+body{
+	position: relative;
+}
+.reproductor{
+	position:fixed;
+	bottom: 0;
+	left: 0;
+	z-index: 1100000;
+	box-shadow: 10px 15px 40px 10px #e922be;
+	background: #5e1447;
+	width: 100%;
+	height: 120px;
+	display: flex;
+	justify-content:space-between;
+	align-items:flex-end;
+}
+.banner-song{
+	width: 350px;
+	height: 100px;
+	margin: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.optiones-settings{
+	flex: 1;
+}
+.banner-song img{
+	border-radius: 5px;
+	width: 80px;
+	height: 80px;
+	object-fit: cover;
+}
+.song-info{
+	padding: 0px 10px;
+}
+
+.song-info p{
+	font-size: 20px;
+	font-weight: lighter;
+	color: #fff;
+}
+.song-info h3{
+	font-size: 20px;
+	color: #ddd;
+}
+.liked{
+height: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.liked i{
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+}
+.liked i:hover{
+	color: #e922be;
+}
+.controls{
+	padding: 10px;
+	height: 100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.controls-superior{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.iconsControls{
+	padding: 5px;
+	margin: 10px 5px;
+}
+.iconsControls img{
+   filter: invert(100%);
+   width: 15px;
+   height: 15px;
+}
+.iconsControls i{
+	   padding: 5px;
+	   border-radius: 50%;
+	   background: #fff;
+       font-size: 30px;
+       color: #5e1447;
+}
+	.song-duration{
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+}
+
+.line-time{
+	background: #ccc;
+	height: 5px;
+	border-radius: 10px;
+	width: 80%;
+}

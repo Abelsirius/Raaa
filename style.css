@@ -28,7 +28,6 @@ header.activeBg{
 ::-webkit-scrollbar-thumb{
 	  background: #54113f;
 }
-
 .user-avatar{
      width: 150px;
      height: 60px; 
@@ -374,6 +373,7 @@ img{
 		  object-fit: cover;
         width: 100%;
         height: 100%;
+        border-radius: 50px;
 }
 .name-of-music{
 	flex: 1;
@@ -413,7 +413,7 @@ img{
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
-	height: 900px;
+   height: calc(900px + 150px);
 }
 
 .type-music{
@@ -976,6 +976,26 @@ i{
 	  	 font-size: 10px;
 
 	}
+	.banner-song{
+      width: 200px;
+	}
+	.song-info p{
+        font-size: 12px;
+	}
+	.song-info h3{
+		font-size: 15px;
+
+	}
+	.banner-song img{
+        height: 50px;
+        width: 50px;
+	}
+	.ri-heart-fill{
+        font-size: 20px;
+	}
+	.iconsControls i{
+      font-size: 20px;
+	}
 	.title-logo{
      font-size: 20px;
 	}
@@ -1057,5 +1077,18 @@ i{
 	}
 	.search-place-2{
 		width: 250px;
+	}
+}
+
+
+@media screen and (max-width:400px){
+	.search-place{
+		width: 80px;
+	}
+	.song-info h3,.song-info p{
+		font-size: 9px;
+	}
+	.liked i{
+		font-size: 15px;
 	}
 }
