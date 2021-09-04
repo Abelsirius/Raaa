@@ -627,19 +627,13 @@ const createViewMusic = (nMusic,nArtista,urlImg,urlMusic)=>{
     let divResults = document.createElement("DIV");
     let divImgBc = document.createElement("DIV");
     let divNameMusic = document.createElement("DIV");
-    let Music = document.createElement("DIV");
+
   
     let img = document.createElement("IMG");
     let p = document.createElement("P");
     let h3 = document.createElement("H3");
-    let audio = document.createElement("AUDIO");
-    let source = document.createElement("SOURCE");
    
-  
-   source.setAttribute("src",urlMusic)
-   source.setAttribute("type","audio/mp3")
-    Music.classList.add("content-music-search")
-    audio.classList.add("music-search")
+
     divResults.classList.add("result-music");
     divImgBc.classList.add("imgbc");
     divNameMusic.classList.add("name-of-music");
@@ -648,8 +642,6 @@ const createViewMusic = (nMusic,nArtista,urlImg,urlMusic)=>{
     p.textContent = nMusic;
     h3.textContent = nArtista;
 
-    audio.appendChild(source)
-    Music.appendChild(audio)
     
     divImgBc.appendChild(img);
     divNameMusic.appendChild(p)
@@ -659,10 +651,9 @@ const createViewMusic = (nMusic,nArtista,urlImg,urlMusic)=>{
 
     divResults.appendChild(divImgBc)
     divResults.appendChild(divNameMusic);
-    divResults.appendChild(Music)
 
 
- const  codeReproductorMusic = (song,imgSong,nSong,nameArtista,audio)=>{
+ const  codeReproductorMusic = (imgSong,nMusic,nameArtista)=>{
     
     let body = document.querySelector("body");
 
@@ -692,16 +683,26 @@ const createViewMusic = (nMusic,nArtista,urlImg,urlMusic)=>{
     let img = document.createElement("IMG")
     img.setAttribute("src",imgSong)
 
+    let Music = document.createElement("DIV");
+    let audio = document.createElement("AUDIO");
+    let source = document.createElement("SOURCE");
     let songInfo = document.createElement("DIV");
     songInfo.classList.add("song-info")
+    Music.classList.add("content-music-search")
+    audio.classList.add("music-search")
+   source.setAttribute("src",urlMusic)
+   source.setAttribute("type","audio/mp3")
+    audio.appendChild(source)
+    Music.appendChild(audio)
 
     let p = document.createElement("P");
     
-    p.textContent = nSong;
+    p.textContent = nMusic;
 
     let h3 = document.createElement("H3");
 
     h3.textContent = nameArtista;
+
 
     let divLiked = document.createElement("DIV");
     divLiked.classList.add("liked");
@@ -759,6 +760,7 @@ const createViewMusic = (nMusic,nArtista,urlImg,urlMusic)=>{
     divControlSuperior.appendChild(contentBtnSiguiente)
 
     divControls.appendChild(divControlSuperior)
+    divControls.appendChild(Music)
     divDurationSong.appendChild(divLineTime)
     divOptions.appendChild(divControls)
 
@@ -766,12 +768,12 @@ const createViewMusic = (nMusic,nArtista,urlImg,urlMusic)=>{
     divContent.appendChild(divOptions)
      
      btnPlayPause.addEventListener("click",(e)=>{
-       if (song.paused) {
+       if (audio.paused) {
           e.currentTarget.classList.replace("ri-play-fill","ri-pause-fill");
-          song.play()
+          audio.play()
        } else{
           e.currentTarget.classList.replace("ri-pause-fill","ri-play-fill");        
-          song.pause();
+          audio.pause();
        }
 
      })
@@ -779,13 +781,13 @@ const createViewMusic = (nMusic,nArtista,urlImg,urlMusic)=>{
 
 
 }
-
-   divResults.addEventListener("click",(e)=>{      
-    codeReproductorMusic(e.currentTarget.children[2].children[0],urlImg,nMusic,nArtista);
+      divResults.addEventListener("click",(e)=>{ 
+        let cajaSerachResult = document.querySelector(".search-results");
+        cajaSerachResult.style.height = "0px";
+    codeReproductorMusic(urlImg,nMusic,nArtista);
    })
   
     cajaPadreResults.appendChild(divResults);
-
 
 }
 
@@ -802,7 +804,6 @@ placeSearch.addEventListener("keyup",(e)=>{
          cajaSerachResult.style.height = "0px";
          cajaSerachResult.style.transition = ".3s";
         for (let i = 0; i < cajaSerachResult.children.length; i++) {
-            console.log(cajaSerachResult)
             cajaSerachResult.removeChild(cajaSerachResult.children[i]);
         }
     }
