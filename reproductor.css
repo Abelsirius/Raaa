@@ -106,7 +106,45 @@ align-items: center;
 		align-items: center;
 
 }
-
+	#volumen[type="range"]{
+		   position: relative;
+       width: 150px;
+  }
+	#volumen::-moz-range-track {
+  background-color:#fcc7ec;
+  height: 3px;
+  width: 100%;
+    border-radius: 20px;
+}
+ #volumen:focus::-webkit-slider-runnable-track{
+  outline: none;
+}
+ #volumen::-webkit-slider-runnable-track {
+  background-color: #fcc7ec;
+  height: 5px;
+    border-radius: 20px;
+}
+#volumen::-ms-thumb{
+  background-color: #fcc7ec;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #333;
+  border-radius: 50%;
+}
+#volumen::-webkit-slider-thumb {
+  background-color: #e61ca6;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #333;
+  border-radius: 50%;
+  margin-top: -9px;
+}
+#volumen,
+#volumen::-webkit-slider-runnable-track,
+#volumen::-webkit-slider-thumb {
+  -webkit-appearance: none;
+    border-radius: 20px;
+}
 .line-time{
 	background: #ccc;
 	height: 5px;

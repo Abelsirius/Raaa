@@ -682,6 +682,7 @@ const createViewMusic = (nMusic,nArtista,urlImg,urlMusic)=>{
 
     let img = document.createElement("IMG")
     img.setAttribute("src",imgSong)
+    
 
     let Music = document.createElement("DIV");
     let audio = document.createElement("AUDIO");
@@ -716,6 +717,7 @@ const createViewMusic = (nMusic,nArtista,urlImg,urlMusic)=>{
     let divControlSuperior = document.createElement("DIV");
     divControlSuperior.classList.add("controls-superior");
 
+
     let contentBtnAnterior = document.createElement("DIV");
     contentBtnAnterior.classList.add("iconsControls");
 
@@ -740,6 +742,15 @@ const createViewMusic = (nMusic,nArtista,urlImg,urlMusic)=>{
 
     let divLineTime = document.createElement("DIV");
     divLineTime.classList.add("line-time");
+   
+    let volumenMusic = document.createElement("INPUT")
+    volumenMusic.setAttribute("id","volumen")
+    volumenMusic.setAttribute("type","range");
+    volumenMusic.setAttribute("min","0");
+    volumenMusic.setAttribute("value","100");
+    volumenMusic.setAttribute("max","100");
+
+
 
     divBanner.appendChild(img)
 
@@ -751,21 +762,38 @@ const createViewMusic = (nMusic,nArtista,urlImg,urlMusic)=>{
     divLiked.appendChild(i)
 
     divBanner.appendChild(divLiked)
-
+    
     contentBtnAnterior.appendChild(imgBtnAnterior)
     divControlSuperior.appendChild(contentBtnAnterior)
     divPlayPause.appendChild(btnPlayPause)
     divControlSuperior.appendChild(divPlayPause)
     contentBtnSiguiente.appendChild(imgBtnSiguiente)
-    divControlSuperior.appendChild(contentBtnSiguiente)
-
-    divControls.appendChild(divControlSuperior)
-    divControls.appendChild(Music)
     divDurationSong.appendChild(divLineTime)
+    divControlSuperior.appendChild(contentBtnSiguiente)
+    divControlSuperior.appendChild(volumenMusic);
+    divControls.appendChild(divControlSuperior)
+    divControls.appendChild(divDurationSong)
+    divControls.appendChild(Music)
     divOptions.appendChild(divControls)
 
     divContent.appendChild(divBanner)
     divContent.appendChild(divOptions)
+
+
+
+    console.log(volumenMusic)
+
+
+
+    volumenMusic.addEventListener("input",(e)=>{
+        let value = e.path[0].value / 100 ;
+        console.log(value)
+        audio.volume = value;
+    })
+
+    i.addEventListener("click",()=>{
+         i.classList.toggle("active")
+    })
      
      btnPlayPause.addEventListener("click",(e)=>{
        if (audio.paused) {
@@ -775,7 +803,9 @@ const createViewMusic = (nMusic,nArtista,urlImg,urlMusic)=>{
           e.currentTarget.classList.replace("ri-pause-fill","ri-play-fill");        
           audio.pause();
        }
-
+     })
+     audio.addEventListener("ended",(e)=>{
+        btnPlayPause.classList.replace("ri-pause-fill","ri-play-fill");   
      })
     body.appendChild(divContent);
 
@@ -784,7 +814,7 @@ const createViewMusic = (nMusic,nArtista,urlImg,urlMusic)=>{
       divResults.addEventListener("click",(e)=>{ 
         let cajaSerachResult = document.querySelector(".search-results");
         cajaSerachResult.style.height = "0px";
-    codeReproductorMusic(urlImg,nMusic,nArtista);
+        codeReproductorMusic(urlImg,nMusic,nArtista);
    })
   
     cajaPadreResults.appendChild(divResults);
@@ -816,18 +846,3 @@ placeSearch.addEventListener("keyup",(e)=>{
   }
    
 })
-
-
-
-
-      //  if (e.currentTarget.children[2].children[0].paused) {
-      //     let audioSearch = document.querySelectorAll(".music-search")
-      //      for (let i = 0; i < audioSearch.length; i++) {
-      //          if (audioSearch[i].play) {
-      //           audioSearch[i].pause();
-      //          }
-      //      }
-      //   e.currentTarget.children[2].children[0].play();
-      // }else{
-      //   e.currentTarget.children[2].children[0].pause();
-      // }

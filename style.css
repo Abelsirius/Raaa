@@ -220,7 +220,7 @@ header.activeBg{
 			border-radius: 50px;
 			outline: none;
 			border: none;
-			background: linear-gradient(120deg,#1414b5,#7b13a1);
+			background: linear-gradient(120deg,#e922be ,#ff8bff)
 		}
 	.img-logo i{
 		color:#fff;
@@ -409,7 +409,7 @@ img{
 }
 
 .main{
-	background: #222;
+	background:#402337;
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
@@ -727,7 +727,7 @@ img{
      align-items: center;
 }
 	.duration-music-info i {
-     color:#672ad1;
+     color:#e922be;
      margin: 0px 15px;
 	}
 		.duration-music-info p{
@@ -968,6 +968,10 @@ i{
     padding: 1px 10px;
 }
 
+.ri-heart-fill.active{
+	color: #f222c5;
+}
+
 @media screen and (max-width:600px){
 	.name-of-music p{
        font-size: 10px;
@@ -1035,7 +1039,14 @@ i{
 	   .type-music.active{ 	
 	   transform: translateX(0%);;
       }  
-
+      #volumen[type="range"]{
+      	position: relative;
+    top: -15px;
+    width: 70px;
+    margin: 0px;
+    transform: rotateZ(
+-450.10deg);
+      }
 	   .content-music-preview{
          width: 100%;
 	   }
