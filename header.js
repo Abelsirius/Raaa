@@ -606,10 +606,49 @@ const infoMusic = [
           siglas : "TIWYCF",
           img :"thisIS.jpg",
           urlUdio :"thisIS.mp3"
-      }                                                                 
+      }
+      ,
+      music = {
+          name : " Kimetsu no Yaiba - Opening Full",
+          artista : "LiSA",
+          siglas : "KNY",
+          img :"DS.jpg",
+          urlUdio :"openingDemon.mp3"
+      } ,
+      music = {
+          name : " Kimetsu no Yaiba - no Uta",
+          artista : "Masaru Shiina",
+          siglas : "KNY",
+          img :"DS.jpg",
+          urlUdio :"endingDemon.mp3"
+      } 
+       ,
+      music = {
+          name : " Death Note - Low Of Solipsism",
+          artista : "Yoshihisa Hirano",
+          siglas : "LOS",
+          img :"yagami.jpg",
+          urlUdio :"yagami.mp3"
+      }  
+        ,
+      music = {
+          name : " Death Note- Kuroi Light",
+          artista : " Kyrie For",
+          siglas : "DNKL",
+          img :"yagami.jpg",
+          urlUdio :"kuroi.mp3"
+      }
+        ,
+      music = {
+          name : "akon - lonely",
+          artista : "Akon",
+          siglas : "L",
+          img :"lonely.jpg",
+          urlUdio :"lonely.mp3"
+      }                                                                         
 ]
 
-console.log(infoMusic[12].artista.toLowerCase().includes("canserbero"))
+console.log(infoMusic[12].artista.toLowerCase().startsWith("canserbero"))
 
 
 
@@ -682,7 +721,15 @@ const createViewMusic = (nMusic,nArtista,urlImg,urlMusic)=>{
 
     let img = document.createElement("IMG")
     img.setAttribute("src",imgSong)
-    
+      
+
+    let contentBucle = document.createElement("DIV");
+    let bucle = document.createElement("IMG");
+    contentBucle.classList.add("content-bucle")
+    bucle.setAttribute("src","loop.svg")
+
+    contentBucle.appendChild(bucle);
+      
 
     let Music = document.createElement("DIV");
     let audio = document.createElement("AUDIO");
@@ -743,6 +790,13 @@ const createViewMusic = (nMusic,nArtista,urlImg,urlMusic)=>{
     let divLineTime = document.createElement("DIV");
     divLineTime.classList.add("line-time");
    
+    let progressMusic = document.createElement("DIV");
+
+    progressMusic.classList.add("progress");
+
+
+    divLineTime.appendChild(progressMusic);
+
     let volumenMusic = document.createElement("INPUT")
     volumenMusic.setAttribute("id","volumen")
     volumenMusic.setAttribute("type","range");
@@ -750,7 +804,32 @@ const createViewMusic = (nMusic,nArtista,urlImg,urlMusic)=>{
     volumenMusic.setAttribute("value","100");
     volumenMusic.setAttribute("max","100");
 
+    
 
+   const  activarBucle = (num) =>{
+     let contador = 0;
+     audio.addEventListener("ended",()=>{
+       
+       if (contador <= num) {
+          audio.play();
+          btnPlayPause.classList.replace("ri-play-fill","ri-pause-fill");
+       }else{
+          contentBucle.classList.remove("active"); 
+       }
+       
+     })
+
+
+   }
+    bucle.addEventListener("click",(e)=>{
+          if (contentBucle.classList.contains("active") == false) {
+              contentBucle.classList.add("active");
+              activarBucle(100);
+          }else{
+              contentBucle.classList.remove("active");            
+          }
+
+    })
 
     divBanner.appendChild(img)
 
@@ -762,7 +841,7 @@ const createViewMusic = (nMusic,nArtista,urlImg,urlMusic)=>{
     divLiked.appendChild(i)
 
     divBanner.appendChild(divLiked)
-    
+    divControlSuperior.appendChild(contentBucle)
     contentBtnAnterior.appendChild(imgBtnAnterior)
     divControlSuperior.appendChild(contentBtnAnterior)
     divPlayPause.appendChild(btnPlayPause)
@@ -784,22 +863,50 @@ const createViewMusic = (nMusic,nArtista,urlImg,urlMusic)=>{
     console.log(volumenMusic)
 
 
+      let restador = 1;  
+      let secondsMusic = Math.round(audio.duration);      
+
+
 
     volumenMusic.addEventListener("input",(e)=>{
-        let value = e.path[0].value / 100 ;
-        console.log(value)
+        let value = e.path[0].value / 100 ;      
         audio.volume = value;
     })
 
     i.addEventListener("click",()=>{
          i.classList.toggle("active")
     })
-     
-     btnPlayPause.addEventListener("click",(e)=>{
+     btnPlayPause.addEventListener("click",(e)=>{   
+      let restador = 1;  
+      let secondsMusic = Math.round(audio.duration);
+      const stopInterval =(interval)=>{
+        clearInterval(interval)
+      }
+      const progreso = () =>{
+        if (audio.paused == false) {
+          if (restador < secondsMusic) { 
+          let width = restador * 100 / secondsMusic;
+          localStorage.setItem("width", width)
+         if (localStorage.getItem("duration")) {
+             progressMusic.style.width = `${localStorage.getItem("duration")}%`;
+         }
+          progressMusic.style.width = `${localStorage.getItem("width")}%`;
+        }
+        }else if (audio.paused) {
+             let res = localStorage.setItem("res",restador);
+             let duration =   localStorage.setItem("duration", restador * 100 / secondsMusic)
+            stopInterval(progresoMusic)
+        }
+
+         restador++;    
+        }
+      var progresoMusic = setInterval(progreso,1000);           
        if (audio.paused) {
           e.currentTarget.classList.replace("ri-play-fill","ri-pause-fill");
           audio.play()
-       } else{
+       }
+        else{
+          clearInterval(progresoMusic)
           e.currentTarget.classList.replace("ri-pause-fill","ri-play-fill");        
           audio.pause();
        }
@@ -811,6 +918,8 @@ const createViewMusic = (nMusic,nArtista,urlImg,urlMusic)=>{
 
 
 }
+
+
       divResults.addEventListener("click",(e)=>{ 
         let cajaSerachResult = document.querySelector(".search-results");
         cajaSerachResult.style.height = "0px";
@@ -846,3 +955,11 @@ placeSearch.addEventListener("keyup",(e)=>{
   }
    
 })
+
+
+
+
+
+// caches.open("archivos-estatics").then(cache=>{
+//     cache.addAll("index.htm","style.css","header.js","reproductor.css")
+// })
