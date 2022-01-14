@@ -10,17 +10,6 @@ window.addEventListener("scroll",()=>{
     }
 })
 
-     var swiper = new Swiper(".swiper",{
-        grabCursor: true,
-        centeredSlides: true,
-        slidesPerView: "auto",
-
-        spaceBetween:0,
-        coverflowEffect: {
-          rotate: 0,
-        },
-      });
-
 
 
  const menu = document.querySelector(".ri-menu-line");
@@ -645,7 +634,30 @@ const infoMusic = [
           siglas : "L",
           img :"lonely.jpg",
           urlUdio :"lonely.mp3"
-      }                                                                         
+      } ,
+      music = {
+        name : "Macklemore & Ryan Lewis - Can't Hold Us",
+        artista : "Macklemore & Ryan Lewis",
+        siglas : "M",
+        img :"cantHoldUs.jpg",
+        urlUdio :"cantHoldUs.mp3"
+    }  
+    ,
+    music = {
+      name : "Lil Wayne - What About me",
+      artista : "Lil Wayne",
+      siglas : "LW",
+      img :"aboutMe.jpg",
+      urlUdio :"aboutMe.mp3"
+  }  
+      ,
+    music = {
+      name : "David Guetta - Play Hard ft. Ne-Yo, Akon",
+      artista : "David Guetta",
+      siglas : "DG",
+      img :"workHard.jpg",
+      urlUdio :"workHard.mp3"
+  }                                                                     
 ]
 
 console.log(infoMusic[12].artista.toLowerCase().startsWith("canserbero"))
