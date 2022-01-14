@@ -969,7 +969,7 @@ placeSearch.addEventListener("keyup",(e)=>{
 })
 
 
-    var swiper = new Swiper('.swiper', {
+var swiper = new Swiper('.swiper', {
       slidesPerView: 4,
       spaceBetween: 30,
       centeredSlides: true,
