@@ -969,8 +969,15 @@ placeSearch.addEventListener("keyup",(e)=>{
 })
 
 
-
-
+var swiper = new Swiper('.swiper', {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    freeMode: true,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+  });
 
 // caches.open("archivos-estatics").then(cache=>{
 //     cache.addAll("index.htm","style.css","header.js","reproductor.css")
