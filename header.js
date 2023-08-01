@@ -987,19 +987,36 @@ placeSearch.addEventListener("keyup",(e)=>{
   }
    
 })
-
-
 var swiper = new Swiper('.swiper', {
-      slidesPerView: 4,
-      spaceBetween: 30,
-      centeredSlides: true,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-    });
+    slidesPerView: 3,
+    spaceBetween: 25,
+    centeredSlides: true,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+  });
 
 
+const  view = window.matchMedia("(max-width: 700px)");
+ function screenTest ( e){
+    if(e.matches){
+        var swiper = new Swiper('.swiper', {
+            slidesPerView: 3,
+            spaceBetween: 25,
+            centeredSlides: true,
+            pagination: {
+              el: '.swiper-pagination',
+              clickable: true,
+            },
+          });
+      
+    }
+ }
+
+ view.addListener(screenTest);
+// document.querySelector(".mq-value").innerText = mql.matches;
+ 
 // caches.open("archivos-estatics").then(cache=>{
 //     cache.addAll("index.htm","style.css","header.js","reproductor.css")
 // })
