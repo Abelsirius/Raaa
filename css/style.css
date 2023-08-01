@@ -260,3 +260,9 @@ header{
 }
 
 }
+
+
+.progress{
+	height: 10px;
+	background: #cf1557;
+}

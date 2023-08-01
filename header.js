@@ -1,7 +1,6 @@
 let header = document.querySelector("header");
 
 
-
 window.addEventListener("scroll",()=>{
     if (window.scrollY > 0) {
     	header.classList.add("activeBg")
@@ -9,6 +8,7 @@ window.addEventListener("scroll",()=>{
     	header.classList.remove("activeBg")
     }
 })
+
 
 
 
@@ -738,7 +738,7 @@ const createViewMusic = (nMusic,nArtista,urlImg,urlMusic)=>{
     let contentBucle = document.createElement("DIV");
     let bucle = document.createElement("IMG");
     contentBucle.classList.add("content-bucle")
-    bucle.setAttribute("src","loop.svg")
+    bucle.setAttribute("src","loop.png")
 
     contentBucle.appendChild(bucle);
       
@@ -802,19 +802,29 @@ const createViewMusic = (nMusic,nArtista,urlImg,urlMusic)=>{
     let divLineTime = document.createElement("DIV");
     divLineTime.classList.add("line-time");
    
-    let progressMusic = document.createElement("DIV");
+    let progressMusic = document.createElement("INPUT");
 
     progressMusic.classList.add("progress");
+    progressMusic.setAttribute("id","progress");
+
+    progressMusic.setAttribute("type","range");
+    progressMusic.setAttribute("min",0);
+    progressMusic.setAttribute("value",100);
+    progressMusic.setAttribute("max",100);
 
 
-    divLineTime.appendChild(progressMusic);
+
+
+
 
     let volumenMusic = document.createElement("INPUT")
     volumenMusic.setAttribute("id","volumen")
     volumenMusic.setAttribute("type","range");
-    volumenMusic.setAttribute("min","0");
-    volumenMusic.setAttribute("value","100");
-    volumenMusic.setAttribute("max","100");
+    volumenMusic.setAttribute("min",0);
+    volumenMusic.setAttribute("step",0,1);
+
+    volumenMusic.setAttribute("value",80);
+    volumenMusic.setAttribute("max",100);
 
     
 
@@ -859,7 +869,7 @@ const createViewMusic = (nMusic,nArtista,urlImg,urlMusic)=>{
     divPlayPause.appendChild(btnPlayPause)
     divControlSuperior.appendChild(divPlayPause)
     contentBtnSiguiente.appendChild(imgBtnSiguiente)
-    divDurationSong.appendChild(divLineTime)
+    divDurationSong.appendChild(progressMusic)
     divControlSuperior.appendChild(contentBtnSiguiente)
     divControlSuperior.appendChild(volumenMusic);
     divControls.appendChild(divControlSuperior)
@@ -881,44 +891,40 @@ const createViewMusic = (nMusic,nArtista,urlImg,urlMusic)=>{
 
 
     volumenMusic.addEventListener("input",(e)=>{
-        let value = e.path[0].value / 100 ;      
+        console.log("hola");
+        let value = e.target.valueAsNumber / 100;
         audio.volume = value;
     })
 
     i.addEventListener("click",()=>{
          i.classList.toggle("active")
     })
-     btnPlayPause.addEventListener("click",(e)=>{   
+     btnPlayPause.addEventListener("click",(e)=>{  
+        divContent.classList.add("active");
+
       let restador = 1;  
       let secondsMusic = Math.round(audio.duration);
-      const stopInterval =(interval)=>{
-        clearInterval(interval)
-      }
-      const progreso = () =>{
-        if (audio.paused == false) {
-          if (restador < secondsMusic) { 
-          let width = restador * 100 / secondsMusic;
-          localStorage.setItem("width", width)
-         if (localStorage.getItem("duration")) {
-             progressMusic.style.width = `${localStorage.getItem("duration")}%`;
-         }
-          progressMusic.style.width = `${localStorage.getItem("width")}%`;
-        }
-        }else if (audio.paused) {
-             let res = localStorage.setItem("res",restador);
-             let duration =   localStorage.setItem("duration", restador * 100 / secondsMusic)
-            stopInterval(progresoMusic)
-        }
+      let currentTime = Math.round(audio.currentTime);
+      console.log(secondsMusic,currentTime)
 
-         restador++;    
-        }
-      var progresoMusic = setInterval(progreso,1000);           
+      progressMusic.addEventListener("change",setVideoTime)
+      audio.addEventListener("timeupdate",updateVideoTime);
+
+      function setVideoTime (){
+          audio.currentTime = Number((progressMusic.value * audio.duration) / 100);
+      }
+  
+      function updateVideoTime (){
+          progressMusic.value = Number((audio.currentTime / audio.duration) * 100)
+      }
+  
+      
        if (audio.paused) {
+
           e.currentTarget.classList.replace("ri-play-fill","ri-pause-fill");
           audio.play()
        }
         else{
-          clearInterval(progresoMusic)
           e.currentTarget.classList.replace("ri-pause-fill","ri-play-fill");        
           audio.pause();
        }
@@ -978,6 +984,7 @@ var swiper = new Swiper('.swiper', {
         clickable: true,
       },
     });
+
 
 // caches.open("archivos-estatics").then(cache=>{
 //     cache.addAll("index.htm","style.css","header.js","reproductor.css")

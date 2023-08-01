@@ -97,7 +97,6 @@ header.activeBg{
 .content-form::before{
 	content: "";
 	position: absolute;
-	background: ;
 	top: 0;
 	left: 0;
 	width:250px;
@@ -108,7 +107,6 @@ header.activeBg{
 .content-form::after{
 	content: "";
 	position: absolute;
-	background: ;
 	bottom: 0;
 	left: 0;
 	width:250px;
@@ -1103,3 +1101,42 @@ i{
 		font-size: 15px;
 	}
 }
+
+.progress{
+	background-color: #cf1557;
+	position: absolute;
+	top: 0;
+	left: 0;
+	-webkit-appearance: none;
+	height: 5px;
+	width: 100%
+
+}
+
+#progress::-ms-thumb{
+	background-color: #fcc7ec;
+  }
+
+  #progress::-webkit-slider-thumb {
+	background-color: #e61ca6;
+	width: 20px;
+	height: 20px;
+	border: 3px solid #333;
+	border-radius: 50%;
+	margin-top: -9px;
+  }
+  #progress::-webkit-slider-thumb {
+	background-color: #e61ca6;
+	width: 20px;
+	height: 20px;
+	border: 3px solid #333;
+	border-radius: 50%;
+	margin-top: -4px;
+  }
+  #progress,
+  #progress::-webkit-slider-runnable-track,
+  #progress::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	  border-radius: 20px;
+  }
+  
