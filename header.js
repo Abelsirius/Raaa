@@ -780,6 +780,10 @@ const createViewMusic = (nMusic,nArtista,urlImg,urlMusic)=>{
     let contentBtnAnterior = document.createElement("DIV");
     contentBtnAnterior.classList.add("iconsControls");
 
+    let timeStamp = document.createElement("DIV");
+    timeStamp.classList.add("tiempo-actual");
+    timeStamp.innerText= "00:00" ;
+
     let imgBtnAnterior = document.createElement("IMG")
     imgBtnAnterior.setAttribute("src","anterior.svg");
 
@@ -854,7 +858,7 @@ const createViewMusic = (nMusic,nArtista,urlImg,urlMusic)=>{
     })
 
     divBanner.appendChild(img)
-
+    divDurationSong.appendChild(timeStamp);
     songInfo.appendChild(p)
     songInfo.appendChild(h3)
 
@@ -916,8 +920,18 @@ const createViewMusic = (nMusic,nArtista,urlImg,urlMusic)=>{
   
       function updateVideoTime (){
           progressMusic.value = Number((audio.currentTime / audio.duration) * 100)
+          let minutes = Math.floor(audio.currentTime / 60);
+          if(minutes < 10){
+             minutes = "0" + minutes;
+          }
+          let sec = Math.floor((audio.currentTime % 60));
+
+          if(sec < 10){
+            sec = "0" + sec;
+          }
+          timeStamp.textContent = ` ${minutes}:${sec}`;
       }
-  
+      
       
        if (audio.paused) {
 
