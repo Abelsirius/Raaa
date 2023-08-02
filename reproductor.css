@@ -179,3 +179,8 @@ align-items: center;
   -webkit-appearance: none;
     border-radius: 20px;
 }
+
+.tiempo-actual{
+	color: #fff;
+	font-size: 20px;
+}
